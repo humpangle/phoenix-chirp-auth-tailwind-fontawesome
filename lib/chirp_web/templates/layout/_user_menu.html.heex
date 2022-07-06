@@ -1,0 +1,29 @@
+<%= if @current_user do %>
+  <span class="navbar-item js-user-logged-in">
+    <%= @current_user.email %>
+  </span>
+
+  <%= link(
+    "Settings",
+    to: Routes.user_settings_path(@conn, :edit),
+    class: "button is-primary"
+  ) %>
+
+  <%= link("Log out",
+    to: Routes.user_session_path(@conn, :delete),
+    method: :delete,
+    class: "button is-light"
+  ) %>
+<% else %>
+  <%= link(
+    "Register",
+    to: Routes.user_registration_path(@conn, :new),
+    class: "button is-primary"
+  ) %>
+
+  <%= link(
+    "Log in",
+    to: Routes.user_session_path(@conn, :new),
+    class: "button is-light"
+  ) %>
+<% end %>

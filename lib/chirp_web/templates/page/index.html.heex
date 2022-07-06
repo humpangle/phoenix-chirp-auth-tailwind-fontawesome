@@ -1,0 +1,32 @@
+<section class="hero is-info">
+  <div class="hero-body">
+    <p id="hero-title" class="title">
+      Chirp
+    </p>
+  </div>
+</section>
+
+<div class="mt-5">
+  <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+    <%= link("LiveDashboard",
+      to: Routes.live_dashboard_path(@conn, :home),
+      class: "box",
+      target: "_blank"
+    ) %>
+  <% end %>
+
+  <%= if Application.get_env(:chirp, :show_mail_box) do %>
+    <%= link to: "/dev/mailbox",
+      class: "box",
+      target: "_blank"
+    do %>
+      Mailbox Preview
+    <% end %>
+  <% end %>
+
+  <%= link to: Routes.post_index_path(@conn, :index),
+      class: "box"
+    do %>
+    Posts
+  <% end %>
+</div>

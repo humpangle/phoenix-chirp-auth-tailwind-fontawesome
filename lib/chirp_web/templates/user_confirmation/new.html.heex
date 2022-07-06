@@ -1,0 +1,40 @@
+<h1 id="user-resend-confirmation" class="text-3xl mb-4 font-bold">
+  Resend confirmation instructions
+</h1>
+
+<.form
+  let={f}
+  for={:user}
+  action={Routes.user_confirmation_path(@conn, :create)}
+>
+  <div class="field">
+    <%= label(
+      f,
+      :email,
+      class: "label"
+    ) %>
+
+    <%= email_input(
+      f,
+      :email,
+      required: true,
+      class: "input"
+    ) %>
+  </div>
+
+  <%= submit(
+    "Resend confirmation instructions",
+    class: "button is-info"
+  ) %>
+</.form>
+
+<p class="mt-4">
+  <%= link("Register", to: Routes.user_registration_path(@conn, :new)) %>
+
+  <span class="mx-2">|</span>
+
+  <%= link(
+    "Log in",
+    to: Routes.user_session_path(@conn, :new)
+  ) %>
+</p>
